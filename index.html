@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">  <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>   <!-- ikonki -->
+    <link type="favion" rel="icon" href="images/favicon.png">   <!-- favicon -->
+    <link rel="stylesheet" href="style.css">
+    <title>Pracownicy - zarządzanie</title>
+</head>
+<body>
+    <div class="alert alert-success" id="sukces">
+        <strong>Success!</strong> Pobrano raport.
+    </div>
+    
+    <header>
+        <h1>Pracownicy - zarządzanie</h1>
+    </header>
+    <main id="kontener_main">
+        <div class="left">
+            <table id="my_table" spellcheck="false">
+                <tr style="background: var(--cta-color)">
+                    <th>Imię i Nazwisko</th>
+                    <th>stanowisko</th>
+                    <th>przełożony</th>
+                    <th>data zatrudnienia</th>
+                    <th>obecność</th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="right">
+            <div class="przyciski">
+                <button type="button" class="btn btn-info" onclick="menu_right_show()">Dodaj pacownika</button>
+                <button onclick="generateReport()" class="btn btn-info">Pobierz raport</button>
+            </div>
+            <div id="menu_right" class="close">
+                <button onclick="exit()"><i class="fas fa-times"></i></button>
+                <form onsubmit="return false;" id="my_form">
+                    <label for="imie">Imię:</label>
+                    <input type="text" id="imie" required autocomplete="off">
+                
+                    <label for="nazwisko">Nazwisko:</label>
+                    <input type="text" id="nazwisko" required autocomplete="off">
+                
+                    <label for="stanowisko">Stanowisko:</label>
+                    <input type="text" id="stanowisko" required autocomplete="off">
+
+                    <label for="przelozony">Przełożony:</label>
+                    <input type="text" id="przelozony" required autocomplete="off">
+                
+                    <label for="data_zatrudnienia">Data zatrudnienia:</label>
+                    <input type="date" id="data_zatrudnienia" required autocomplete="off">
+
+                    <div>
+                        <label for="obecnosc">Obecność:</label>
+                        <input type="checkbox" id="obecnosc" required autocomplete="off">
+                    </div>
+
+                    <div class="progress my-3">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" id="progressBar" style="width: 0%"></div>
+                      </div>
+                    
+                    <button type="button" id="send" class="btn btn-success" onclick="addRow()">Zastosuj</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p><span id="rok" style="font-weight: bold;"></span><span> &copy;</span></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
